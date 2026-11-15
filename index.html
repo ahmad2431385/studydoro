@@ -751,7 +751,7 @@ button,.amb-play,.tm-sw{touch-action:manipulation}
   body[data-route="gorunum"] #lookView{grid-column:2;grid-row:2}
   body[data-route="gorunum"] .tm-grip{display:none !important}
 }
-.lk-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px;margin:2px 0 6px;border-radius:14px;background:color-mix(in srgb,var(--ink) 6%,transparent);border:1px solid var(--line)}
+.lk-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;margin:2px 0 6px;border-radius:14px;background:color-mix(in srgb,var(--ink) 6%,transparent);border:1px solid var(--line)}
 .lk-tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 7px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;min-width:0;-webkit-tap-highlight-color:transparent}
 .lk-tabs button span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .lk-tabs button[aria-selected="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.12)}
@@ -864,6 +864,15 @@ body[data-route="gorunum"] .np-prev:not([hidden]){display:flex;position:absolute
 .bgp .tm-bgt[aria-pressed="true"]::after{content:"";position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6.5 12.5 3.5 3.5 7.5-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat;box-shadow:0 0 0 2px var(--surface)}
 .bgp .tm-bgt[aria-pressed="true"]{border-color:var(--accent)}
 body.bgp-open{overflow:hidden}
+
+/* text colour chosen in Görünüm › Yazı: every text on the timer card and the mini player */
+.tm-card[data-tc] :is(.tm-time,.tm-label,.tm-show,.dg-show,.tm-hint,.tm-chip,.tm-seg button,.tm-main,.dg-row,.dg-row .c,.dg-row .sep),
+.tm-np[data-tc] :is(.np-tx b,.np-tx small){color:var(--tc) !important;-webkit-text-fill-color:var(--tc)}
+.tm-card[data-tc] :is(.dg polygon.on,.cl circle.on,.mc circle.on,.mx circle.on){fill:var(--tc)}
+.tm-card[data-tc][data-font="4"] :is(.tm-time,.dg-row .c,.dg-row .sep){color:transparent !important;-webkit-text-fill-color:transparent;-webkit-text-stroke-color:var(--tc)}
+.tm-card[data-tc] .tm-chip{border-color:color-mix(in srgb,var(--tc) 45%,transparent)}
+.tc-cust{position:relative;overflow:hidden;background:conic-gradient(#ef4444,#f59e0b,#eab308,#22c55e,#06b6d4,#3b82f6,#8b5cf6,#ec4899,#ef4444) !important}
+.tc-cust input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;border:0;padding:0}
 
 /* stats */
 .tm-big{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -1053,7 +1062,6 @@ body.bgp-open{overflow:hidden}
         <button type="button" role="tab" data-lt="saat" aria-selected="true"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 1.5"/></svg><span>Saat</span></button>
         <button type="button" role="tab" data-lt="yazi" aria-selected="false"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg><span>Yazı</span></button>
         <button type="button" role="tab" data-lt="bg" aria-selected="false"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-5 4 4 2.5-2.5L20 17"/></svg><span>Fotoğraf</span></button>
-        <button type="button" role="tab" data-lt="renk" aria-selected="false"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.2 0 1.8-.9 1.4-2-.5-1.3.3-2.6 1.7-2.6H17a3.5 3.5 0 0 0 3.5-3.5c0-4.9-3.8-8.9-8.5-8.9Z"/><circle cx="7.8" cy="11" r="1.1"/><circle cx="10.5" cy="7.5" r="1.1"/><circle cx="15" cy="7.8" r="1.1"/></svg><span>Renk</span></button>
         <button type="button" role="tab" data-lt="np" aria-selected="false" aria-label="Mini çalıcı"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span>Çalıcı</span></button>
       </div>
       <div class="lk-pv"><span>Önizleme</span>
@@ -1081,11 +1089,29 @@ body.bgp-open{overflow:hidden}
         <div class="tm-range"><span>Işık</span><input type="range" id="tmDop" min="20" max="100" step="5" aria-label="Dijital saatin ışığı"><output id="tmDopO"></output></div>
         <p class="tm-note">Işığı azaltınca rakamlar soluklaşır, arkadaki fotoğraf daha iyi görünür.</p>
           </div>
+          <p class="lk-cap" style="margin-top:18px">Saat rengi</p>
+          <div class="tm-swatches" id="tmSwatches" role="group" aria-label="Renk"></div>
+        <div class="tm-cp" id="tmCp" hidden>
+          <div class="cp-sv" id="cpSv" role="slider" tabindex="0" aria-label="Doygunluk ve parlaklık"><i id="cpDot"></i></div>
+          <input type="range" class="cp-hue" id="cpHue" min="0" max="359" step="1" aria-label="Renk tonu">
+          <div class="cp-row">
+            <span class="cp-chip" id="cpChip" aria-hidden="true"></span>
+            <input class="cp-hex" id="cpHex" type="text" maxlength="7" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Renk kodu" placeholder="#10a37f">
+            <button class="secondary" id="cpSave" type="button">Kaydet</button>
+          </div>
+          <p class="tm-lbl" style="margin-top:4px">Hazır tonlar</p>
+          <div class="cp-pre" id="cpPre" role="group" aria-label="Hazır tonlar"></div>
+          <p class="tm-note" id="cpMsg">Renk karesinde ve ton çubuğunda parmağını gezdir ya da kodu yaz. "Kaydet" dersen renk listeye eklenir; en fazla 5 özel renk saklanır.</p>
+        </div>
+        <p class="tm-note">"Otomatik" renk bölüme göre değişir: odak yeşil, mola mavi/mor, geri sayım turuncu. Fotoğraf arka planda renkler okunaklı olsun diye otomatik açılır.</p>
         </div>
         <div class="lk-pane" data-lp="yazi" role="tabpanel" hidden>
-          <p class="lk-cap">Yazı stilleri · 7</p>
+          <p class="lk-cap">Yazı · 7</p>
           <div class="tm-skins" id="tmFonts" role="group" aria-label="Yazı stili"></div>
         <p class="tm-note">Stil; analog saatin ortasındaki süreye, dijital saatin rakamlarına ve sayaçtaki diğer yazılara uygulanır. Segment ve Matris rakamları çizgi ve noktalarla çizer; diğer yazılar dijital ekran ve nokta yazı tipine geçer. Klasik ve El yazısı cihazındaki yazı tiplerini kullanır.</p>
+          <p class="lk-cap" style="margin-top:18px">Yazı rengi</p>
+          <div class="tm-swatches" id="tmTxtCol" role="group" aria-label="Yazı rengi"></div>
+          <p class="tm-note">Sayaçtaki bütün yazıların rengi: süre, Odak/Mola, konu, düğme yazıları ve mini çalıcı. "Otomatik" sayfanın kendi renklerini kullanır.</p>
         </div>
         <div class="lk-pane" data-lp="bg" role="tabpanel" hidden>
           <div id="tmBgSec">
@@ -1116,23 +1142,6 @@ body.bgp-open{overflow:hidden}
               <label class="tm-sw set-row"><span>Arka plan sesi mini çalıcısı<small>Sayaç sayfasında saatin altında görünür. Büyütülmüş ekranda yalnızca ses açıkken çıkar.</small></span><input type="checkbox" id="tmNpShow"></label>
             </div>
           </div>
-        </div>
-        <div class="lk-pane" data-lp="renk" role="tabpanel" hidden>
-          <p class="lk-cap">Renkler</p>
-          <div class="tm-swatches" id="tmSwatches" role="group" aria-label="Renk"></div>
-        <div class="tm-cp" id="tmCp" hidden>
-          <div class="cp-sv" id="cpSv" role="slider" tabindex="0" aria-label="Doygunluk ve parlaklık"><i id="cpDot"></i></div>
-          <input type="range" class="cp-hue" id="cpHue" min="0" max="359" step="1" aria-label="Renk tonu">
-          <div class="cp-row">
-            <span class="cp-chip" id="cpChip" aria-hidden="true"></span>
-            <input class="cp-hex" id="cpHex" type="text" maxlength="7" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Renk kodu" placeholder="#10a37f">
-            <button class="secondary" id="cpSave" type="button">Kaydet</button>
-          </div>
-          <p class="tm-lbl" style="margin-top:4px">Hazır tonlar</p>
-          <div class="cp-pre" id="cpPre" role="group" aria-label="Hazır tonlar"></div>
-          <p class="tm-note" id="cpMsg">Renk karesinde ve ton çubuğunda parmağını gezdir ya da kodu yaz. "Kaydet" dersen renk listeye eklenir; en fazla 5 özel renk saklanır.</p>
-        </div>
-        <p class="tm-note">"Otomatik" renk bölüme göre değişir: odak yeşil, mola mavi/mor, geri sayım turuncu. Fotoğraf arka planda renkler okunaklı olsun diye otomatik açılır.</p>
         </div>
       </div>
     </section>
@@ -1337,7 +1346,7 @@ const COLORS = [["#10a37f","Yeşil"],["#3b82f6","Mavi"],["#8b5cf6","Mor"],["#ec4
 
 /* ---------- state ---------- */
 const KS = "odak_ayar", KT = "odak_durum", KK = "odak_geri", KH = "odak_gecmis";
-const DEF = {focus:25, short:5, long:15, cycles:4, cd:1800, mode:"pomo", view:"ring", rskin:0, dskin:0, font:0, fv:0, rz:0, dz:0, fz:0, npShow:true, npSkin:0, npSz:1, npX:-1, npY:-1, npAt:"alt", rOp:1, dOp:1, npOp:1, szv:0, saved:[], color:"auto",
+const DEF = {focus:25, short:5, long:15, cycles:4, cd:1800, mode:"pomo", view:"ring", rskin:0, dskin:0, font:0, fv:0, rz:0, dz:0, fz:0, npShow:true, npSkin:0, npSz:1, npX:-1, npY:-1, npAt:"alt", rOp:1, dOp:1, npOp:1, tc:"auto", szv:0, saved:[], color:"auto",
   sound:true, vibrate:true, hapF:true, hapB:true, wake:true, auto:false, goal:240,
   alarm:"can", alarmVol:0.8, repeat:1, vib:"cift",
   amb:"yagmur", ambVol:0.5, ambOn:false, ambMode:"timer", bg:"", bgDim:0.42};
@@ -1372,6 +1381,7 @@ function loadAll(){
   if (!["pomo","count"].includes(S.mode)) S.mode = "pomo";
   if (!["ring","lcd"].includes(S.view)) S.view = "ring";
   if (S.color !== "auto" && !/^#[0-9a-f]{6}$/i.test(S.color)) S.color = "auto";
+  if (S.tc !== "auto" && !/^#[0-9a-f]{6}$/i.test(S.tc)) S.tc = "auto";
   if (!AMBS.some(a => a.id === S.amb)) S.amb = DEF.amb;
   if (S.bg && !BGS.some(b => b.id === S.bg) && !/^u\d/.test(S.bg)) S.bg = "";
   if (!ALARM_LIST.some(a => a.id === S.alarm)) S.alarm = DEF.alarm;
@@ -1965,7 +1975,7 @@ function renderLook(){
   for (const [id, k] of [["tmRop", "rOp"], ["tmDop", "dOp"]]){ const v = Math.round(S[k]*100); $(id).value = v; $(id + "O").textContent = "%" + v; }
   for (const k of ["rz", "dz"]){ const id = {rz:"tmRz", dz:"tmDz"}[k], pct = S[k] ? Math.round(S[k]*100) : autoPct(k); $(id).value = pct; $(id + "O").textContent = "%" + pct; document.querySelector(`[data-rst="${k}"]`).hidden = !S[k]; }
   // tabs, clock type and sections
-  const tab = ["saat","yazi","bg","renk","np"].includes(LS.get("odak_gorunum_sekme")) ? LS.get("odak_gorunum_sekme") : "saat";
+  const tab = ["saat","yazi","bg","np"].includes(LS.get("odak_gorunum_sekme")) ? LS.get("odak_gorunum_sekme") : "saat";
   $("lkTabs").querySelectorAll("[data-lt]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.lt === tab)));
   document.querySelectorAll("#tmLook .lk-pane").forEach(p => p.hidden = p.dataset.lp !== tab);
   $("lkMode").querySelectorAll("[data-lm]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lm === S.mode)));
@@ -1981,6 +1991,7 @@ function renderLook(){
   $("tmNpOp").value = Math.round(S.npOp*100); $("tmNpOpO").textContent = "%" + Math.round(S.npOp*100);
   $("tmNpSz").value = Math.round(S.npSz*100); $("tmNpSzO").textContent = "%" + Math.round(S.npSz*100);
   $("tmBgDimRow").hidden = !S.bg;
+  renderTxtCol();
   $("tmFonts").querySelectorAll("[data-fn]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.fn === S.font)));
   renderSwatches();
   renderBg();
@@ -2167,7 +2178,12 @@ const pvWide = () => innerWidth >= 1000 && document.body.dataset.route === "goru
 const pvMin = () => pvWide() ? Math.max(260, innerHeight - 150) : innerWidth >= 700 ? Math.round(Math.min(240, Math.max(150, innerHeight*.27))) : 150;
 const pvMax = () => pvWide() ? pvMin() : Math.max(pvMin() + 40, Math.min(560, innerWidth - 56, Math.round(innerHeight*.5) - 112));
 const CQ = !!(window.CSS && CSS.supports && CSS.supports("width", "1cqw"));
+function textColor(card){
+  const on = S.tc !== "auto";
+  for (const el of [card, $("tmNp")]){ if (!el) continue; if (on){ el.dataset.tc = "1"; el.style.setProperty("--tc", S.tc); } else { delete el.dataset.tc; el.style.removeProperty("--tc"); } }
+}
 function sizeVars(card){
+  textColor(card);
   card.style.setProperty("--rop", String(S.rOp)); card.style.setProperty("--dop", String(S.dOp)); card.style.setProperty("--cop", String(S.view === "lcd" ? S.dOp : S.rOp));
   // card width: container units where supported (older Safari lacks them: estimate from the screen width instead)
   const W = CQ ? "100cqw" : "(min(100vw, 680px) - 64px)";
@@ -2280,6 +2296,16 @@ for (const [id, key] of [["tmRz", "rz"], ["tmDz", "dz"]]) $(id).addEventListener
 document.querySelectorAll("[data-rst]").forEach(b => b.addEventListener("click", () => { S[b.dataset.rst] = 0; saveS(); render(); }));
 for (const [id, k] of [["tmRop", "rOp"], ["tmDop", "dOp"]]) $(id).addEventListener("input", e => { S[k] = clamp((+e.target.value)/100, .2, 1); $(id + "O").textContent = "%" + e.target.value; saveS(); sizeVars($("tmCard")); });
 $("lkPv").addEventListener("click", e => { const b = e.target.closest("[data-pv]"); if (!b) return; LS.set("odak_onizleme_tur", b.dataset.pv); pvBig = b.dataset.pv !== "small"; renderLook(); pvApply(); });
+function renderTxtCol(){
+  const box = $("tmTxtCol"), eq = c => S.tc !== "auto" && c.toLowerCase() === S.tc.toLowerCase();
+  const custom = S.tc !== "auto" && !COLORS.some(c => eq(c[0]));
+  box.innerHTML = `<button type="button" class="tm-sw-c auto" data-tc="auto" aria-pressed="${S.tc === "auto"}" aria-label="Otomatik yazı rengi" title="Otomatik">A</button>`
+    + COLORS.map(([c, n]) => `<button type="button" class="tm-sw-c" data-tc="${c}" style="--c:${c}" aria-pressed="${eq(c)}" aria-label="${n}" title="${n}"></button>`).join("")
+    + `<label class="tm-sw-c tc-cust" title="Kendi rengin" aria-pressed="${custom}"><input type="color" id="tmTcIn" value="${custom ? S.tc : "#ffffff"}" aria-label="Kendi yazı rengini seç"></label>`;
+}
+$("tmTxtCol").addEventListener("click", e => { const b = e.target.closest("[data-tc]"); if (!b) return; S.tc = b.dataset.tc; saveS(); textColor($("tmCard")); renderTxtCol(); });
+$("tmTxtCol").addEventListener("input", e => { if (e.target.id !== "tmTcIn") return; S.tc = e.target.value.toLowerCase(); saveS(); textColor($("tmCard")); });
+$("tmTxtCol").addEventListener("change", e => { if (e.target.id === "tmTcIn") renderTxtCol(); });
 $("lkTabs").addEventListener("click", e => { const b = e.target.closest("[data-lt]"); if (!b) return; LS.set("odak_gorunum_sekme", b.dataset.lt); renderLook(); });
 $("lkTabs").addEventListener("keydown", e => { if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return; const t = [...$("lkTabs").children], i = t.indexOf(document.activeElement); if (i < 0) return; const n = t[(i + (e.key === "ArrowRight" ? 1 : t.length - 1)) % t.length]; n.focus(); n.click(); });
 $("lkMode").addEventListener("click", e => { const b = e.target.closest("[data-lm]"); if (!b || b.dataset.lm === S.mode) return; if (cur().status !== "idle"){ toast("Önce çalışan sayacı bitir ya da sıfırla"); return; } S.mode = b.dataset.lm; flashMsg = ""; saveS(); render(); });
