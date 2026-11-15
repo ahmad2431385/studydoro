@@ -1102,18 +1102,18 @@ body.bgp-open{overflow:hidden}
         <div class="lk-pane" data-lp="np" role="tabpanel" hidden>
           <p class="tm-note" style="margin-top:4px">Mini çalıcı, arka plan sesini sayaç ekranından yönetmeni sağlar: önceki/sonraki ses, durdur/oynat ve ses seviyesi.</p>
           <div class="set-grp" style="margin-top:10px">
-            <div class="set-h"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>Sayaç sayfası</div>
-            <div class="set-box">
-              <label class="tm-sw set-row"><span>Arka plan sesi mini çalıcısı<small>Sayaç sayfasında saatin altında görünür. Büyütülmüş ekranda yalnızca ses açıkken çıkar.</small></span><input type="checkbox" id="tmNpShow"></label>
-            </div>
-          </div>
-          <div class="set-grp">
             <div class="set-h"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>Büyütülmüş ekranda</div>
             <div class="set-box">
               <div class="set-row col"><span class="rl">Mini çalıcı tasarımı</span><div class="set-opts" id="tmNpSkins" role="group" aria-label="Büyük ekranda mini çalıcı tasarımı"></div></div>
               <div class="set-row"><span class="rl">Mini çalıcı yeri<small class="sd" id="tmNpPosTxt"></small></span><div class="tm-seg" id="tmNpAt" role="group" aria-label="Mini çalıcı yeri"><button type="button" data-at="ust" aria-pressed="false">Üstte</button><button type="button" data-at="alt" aria-pressed="true">Altta</button></div></div>
               <div class="set-row"><span class="rl">Mini çalıcı boyutu</span><div class="set-rng"><input type="range" id="tmNpSz" min="70" max="140" step="5" aria-label="Büyük ekranda mini çalıcı boyutu"><output id="tmNpSzO"></output></div></div>
               <div class="set-row"><span class="rl">Mini çalıcı saydamlığı<small class="sd">Azaltınca çalıcı soluklaşır, arka plan görünür</small></span><div class="set-rng"><input type="range" id="tmNpOp" min="20" max="100" step="5" aria-label="Büyük ekranda mini çalıcı saydamlığı"><output id="tmNpOpO"></output></div></div>
+            </div>
+          </div>
+          <div class="set-grp">
+            <div class="set-h"><span class="si"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>Sayaç sayfası</div>
+            <div class="set-box">
+              <label class="tm-sw set-row"><span>Arka plan sesi mini çalıcısı<small>Sayaç sayfasında saatin altında görünür. Büyütülmüş ekranda yalnızca ses açıkken çıkar.</small></span><input type="checkbox" id="tmNpShow"></label>
             </div>
           </div>
         </div>
@@ -2284,7 +2284,7 @@ $("lkTabs").addEventListener("click", e => { const b = e.target.closest("[data-l
 $("lkTabs").addEventListener("keydown", e => { if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return; const t = [...$("lkTabs").children], i = t.indexOf(document.activeElement); if (i < 0) return; const n = t[(i + (e.key === "ArrowRight" ? 1 : t.length - 1)) % t.length]; n.focus(); n.click(); });
 $("lkMode").addEventListener("click", e => { const b = e.target.closest("[data-lm]"); if (!b || b.dataset.lm === S.mode) return; if (cur().status !== "idle"){ toast("Önce çalışan sayacı bitir ya da sıfırla"); return; } S.mode = b.dataset.lm; flashMsg = ""; saveS(); render(); });
 $("lkType").addEventListener("click", e => { const b = e.target.closest("[data-lv]"); if (!b) return; S.view = b.dataset.lv; saveS(); render(); });
-$("tmNpShow").addEventListener("change", e => { S.npShow = e.target.checked; saveS(); renderNp(); });
+$("tmNpShow").addEventListener("change", e => { S.npShow = e.target.checked; saveS(); renderNp(); pvApply(); });
 $("tmNpAt").addEventListener("click", e => { const b = e.target.closest("[data-at]"); if (!b) return; S.npAt = b.dataset.at; S.npX = -1; S.npY = -1; saveS(); renderLook(); renderNp(); pvApply(); });
 $("tmNpSkins").addEventListener("click", e => { const b = e.target.closest("[data-nk]"); if (!b) return; S.npSkin = +b.dataset.nk; saveS(); renderLook(); renderNp(); pvApply(); });
 $("tmNpOp").addEventListener("input", e => { S.npOp = clamp((+e.target.value)/100, .2, 1); $("tmNpOpO").textContent = "%" + e.target.value; saveS(); renderNp(); });
