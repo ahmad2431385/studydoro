@@ -867,10 +867,11 @@ body[data-route="gorunum"] .np-prev:not([hidden]){display:flex;position:absolute
 body.bgp-open{overflow:hidden}
 
 /* text colour chosen in Görünüm › Yazı: every text on the timer card and the mini player */
-.tm-card[data-tc] :is(.tm-time,.tm-label,.tm-show,.dg-show,.tm-hint,.tm-chip,.tm-seg button,.tm-main,.dg-row,.dg-row .c,.dg-row .sep),
+.tm-card[data-tc] :is(.tm-fs,.tm-time,.tm-label,.tm-show,.dg-show,.tm-hint,.tm-chip,.tm-seg button,.tm-main,.dg-row,.dg-row .c,.dg-row .sep),
 .tm-np[data-tc] :is(.np-tx b,.np-tx small){color:var(--tc) !important;-webkit-text-fill-color:var(--tc)}
 .tm-card[data-tc] :is(.dg polygon.on,.cl circle.on,.mc circle.on,.mx circle.on){fill:var(--tc)}
 .tm-card[data-tc][data-font="4"] :is(.tm-time,.dg-row .c,.dg-row .sep){color:transparent !important;-webkit-text-fill-color:transparent;-webkit-text-stroke-color:var(--tc)}
+.tm-card[data-tc] .tm-fs{border-color:color-mix(in srgb,var(--tc) 45%,transparent)}
 .tm-card[data-tc] .tm-chip{border-color:color-mix(in srgb,var(--tc) 45%,transparent)}
 .tc-cust{position:relative;overflow:hidden;background:conic-gradient(#ef4444,#f59e0b,#eab308,#22c55e,#06b6d4,#3b82f6,#8b5cf6,#ec4899,#ef4444) !important}
 .tc-cust input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;border:0;padding:0}
@@ -2182,7 +2183,7 @@ const pvMax = () => pvWide() ? pvMin() : Math.max(pvMin() + 40, Math.min(560, in
 const CQ = !!(window.CSS && CSS.supports && CSS.supports("width", "1cqw"));
 function textColor(card){
   const on = S.tc !== "auto";
-  for (const el of [card, $("tmNp")]){ if (!el) continue; if (on){ el.dataset.tc = "1"; el.style.setProperty("--tc", S.tc); } else { delete el.dataset.tc; el.style.removeProperty("--tc"); } }
+  for (const el of [card, $("tmNp"), $("tmNpPrev")]){ if (!el) continue; if (on){ el.dataset.tc = "1"; el.style.setProperty("--tc", S.tc); } else { delete el.dataset.tc; el.style.removeProperty("--tc"); } }
 }
 function sizeVars(card){
   textColor(card);
