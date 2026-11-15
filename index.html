@@ -821,6 +821,9 @@ body[data-route="gorunum"] .np-prev:not([hidden]){display:flex;position:absolute
 /* --- photo categories (Görünüm › Fotoğraf) --- */
 .bgc-bar{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 8px;margin:6px -2px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .bgc-bar::-webkit-scrollbar{display:none}
+/* computers and tablets: every category is visible at once (several rows) instead of a hidden side-scroll */
+@media (min-width:700px){.bgc-bar{flex-wrap:wrap;overflow:visible;row-gap:8px}}
+@media (hover:hover) and (pointer:fine){.bgc-bar{flex-wrap:wrap;overflow:visible;row-gap:8px}}
 .bgc-bar button{flex:none;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:13.5px;font-weight:600;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .bgc-bar button i{font-style:normal;font-size:11.5px;font-weight:700;color:var(--muted);background:color-mix(in srgb,var(--ink) 7%,transparent);border-radius:999px;padding:1px 7px}
 .bgc-bar button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -1330,7 +1333,7 @@ const DSKIN_HIDDEN = [3, 4, 6];   // Segment, Matris (now font styles) and Şeri
 const fontDigits = () => S.font === 5 ? 3 : S.font === 6 ? 4 : -1;
 const DSKIN = ["Sade","Kart","Çevirmeli","Segment","Matris","Çizgi","Şerit","Neon","Cam","Blok"];
 const UP_MAX = 10, COLOR_MAX = 5;   // own photos kept on the device / saved custom colours
-const COLORS = [["#10a37f","Yeşil"],["#3b82f6","Mavi"],["#8b5cf6","Mor"],["#ec4899","Pembe"],["#ef4444","Kırmızı"],["#f59e0b","Turuncu"],["#06b6d4","Turkuaz"],["#64748b","Grafit"],["#ffffff","Beyaz"]];
+const COLORS = [["#10a37f","Yeşil"],["#3b82f6","Mavi"],["#8b5cf6","Mor"],["#ec4899","Pembe"],["#ef4444","Kırmızı"],["#f59e0b","Turuncu"],["#06b6d4","Turkuaz"],["#64748b","Grafit"],["#ffffff","Beyaz"],["#111111","Siyah"]];
 
 /* ---------- state ---------- */
 const KS = "odak_ayar", KT = "odak_durum", KK = "odak_geri", KH = "odak_gecmis";
