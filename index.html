@@ -5,6 +5,11 @@
 <meta name="copyright" content="© 2026 Ahmad Omar Mukhtar. Tüm hakları saklıdır.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studydoro · Odak sayacı</title>
+<script>
+/* Sayaç, program sitesinin "Sayaç" sekmesinde açılır. Bu sayfa doğrudan açılırsa oraya yönlendirilir (kayıtlar aynı adreste saklandığı için korunur). */
+(function(){ if (/[?&]gomulu=1/.test(location.search)) document.documentElement.classList.add("gomulu");
+  else if (window.top === window){ var h = location.hash; location.replace("../donem1-program/" + (h.indexOf("#sayac") === 0 ? h : "#sayac")); } })();
+</script>
 <meta name="theme-color" content="#0b6b55">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Studydoro">
@@ -955,6 +960,10 @@ body.bgp-open{overflow:hidden}
 .tm-pill b{font-family:var(--mono);font-size:15px}
 .tm-pill .pd{width:9px;height:9px;border-radius:50%;background:var(--accent)}
 .tm-pill[data-paused="1"] .pd{background:var(--pdo)}
+/* program sitesinin içinde (gömülü): başlık ve menü programın kendisinde */
+.gomulu .wrap > .top,.gomulu #menuBtn,.gomulu .drawer,.gomulu .drawer-scrim{display:none !important}
+.gomulu .wrap{padding:2px 0 24px}
+.gomulu body{background:transparent}
 </style>
 </head>
 <body>
